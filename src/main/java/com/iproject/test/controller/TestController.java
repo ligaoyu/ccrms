@@ -1,7 +1,7 @@
-package com.iproject.controller;
+package com.iproject.test.controller;
 
-import com.iproject.dao.UserDao;
-import com.iproject.model.UsrUser;
+import com.iproject.test.dao.UserDao;
+import com.iproject.test.model.UsrUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

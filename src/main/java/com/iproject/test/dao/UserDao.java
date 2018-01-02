@@ -1,6 +1,6 @@
-package com.iproject.dao;
+package com.iproject.test.dao;
 
-import com.iproject.model.UsrUser;
+import com.iproject.test.model.UsrUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
