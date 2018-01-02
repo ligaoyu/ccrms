@@ -6,13 +6,13 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * 系统用户信息表
- * Created by ligaoyu on 17/12/30.
+ * 交易流水表
+ * Created by ligaoyu on 18/1/2.
  */
 @Data
 @Entity
-@Table(name = "t_user")
-public class UserEntity {
+@Table(name = "t_trade")
+public class TradeEntity {
 
     /**
      * 自增主键
@@ -38,30 +38,35 @@ public class UserEntity {
     private Integer modUser;
 
     /**
-     * 关联用户ID
+     * 订单id
      */
-    @Column(name = "relate_id")
-    private Integer relateId;
+    @Column(name = "order_id")
+    private Integer  orderId;
 
     /**
-     * 登录名
+     * 金额
      */
-    private String loginname;
+    private Integer amount;
 
     /**
-     * 登录密码
-     */
-    private String password;
-
-    /**
-     * 状态 0注销。1生效
+     * 状态 0=初始化，1=完成，2=退单
      */
     private Integer state;
 
     /**
-     * 类别 0员工。1客户
+     * 描述
      */
-    private Integer type;
+    private String description;
 
+    /**
+     * 开始时间
+     */
+    @Column(name = "start_time")
+    private Date startTime;
 
+    /**
+     * 完成时间时间
+     */
+    @Column(name = "end_time")
+    private Date endTime;
 }

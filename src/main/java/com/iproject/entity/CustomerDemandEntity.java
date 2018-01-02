@@ -1,18 +1,20 @@
 package com.iproject.entity;
 
+/**
+ * 客户供求信息表
+ * Created by ligaoyu on 18/1/2.
+ */
+
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
 
-/**
- * 系统用户信息表
- * Created by ligaoyu on 17/12/30.
- */
 @Data
 @Entity
-@Table(name = "t_user")
-public class UserEntity {
+@Table(name = "t_customer_demand")
+public class CustomerDemandEntity {
+
 
     /**
      * 自增主键
@@ -38,30 +40,23 @@ public class UserEntity {
     private Integer modUser;
 
     /**
-     * 关联用户ID
+     * 所属部门ID
      */
-    @Column(name = "relate_id")
-    private Integer relateId;
+    @Column(name = "customer_id")
+    private Integer customerId;
 
     /**
-     * 登录名
+     * 需求资源
      */
-    private String loginname;
+    private String need;
 
     /**
-     * 登录密码
+     * 提供资源
      */
-    private String password;
+    private String provide;
 
     /**
-     * 状态 0注销。1生效
-     */
-    private Integer state;
-
-    /**
-     * 类别 0员工。1客户
+     * 信息类别 0=提供，1=需求
      */
     private Integer type;
-
-
 }

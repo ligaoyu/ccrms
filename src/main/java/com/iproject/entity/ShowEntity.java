@@ -6,13 +6,13 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * 员工信息表
- * Created by ligaoyu on 17/12/30.
+ * 路演表
+ * Created by ligaoyu on 18/1/2.
  */
 @Data
 @Entity
-@Table(name = "t_employee")
-public class EmployeeEntity {
+@Table(name = "t_show")
+public class ShowEntity {
 
     /**
      * 自增主键
@@ -38,45 +38,26 @@ public class EmployeeEntity {
     private Integer modUser;
 
     /**
-     * 部门ID
+     * 所属部门id
      */
     @Column(name = "department_id")
     private Integer departmentId;
 
     /**
-     * 姓名
+     * 会议id
      */
-    private String name;
+    @Column(name = "conference_id")
+    private Integer conferenceId;
 
     /**
-     * 性别 0女  1男
+     * 参加者id
      */
-    private Integer gender;
+    @Column(name = "customeri_id")
+    private Integer customeriId;
 
     /**
-     * 身份证
+     * 路演题目
      */
-    @Column(name = "id_card")
-    private String idCard;
-
-    /**
-     * 电话号
-     */
-    private String mobile;
-
-    /**
-     * 职位 0=资本顾问，1=办公司主任
-     */
-    private Integer  position;
-
-    /**
-     * 学历 0=中专，1=本科
-     */
-    private Integer education;
-
-    /**
-     * 状态 0=注销，1=生效
-     */
-    private Integer state;
+    private String theme;
 
 }

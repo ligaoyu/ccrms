@@ -6,13 +6,14 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * 系统用户信息表
- * Created by ligaoyu on 17/12/30.
+ * 讲师信息表
+ * Created by ligaoyu on 18/1/2.
  */
+
 @Data
 @Entity
-@Table(name = "t_user")
-public class UserEntity {
+@Table(name = "t_lecturer")
+public class LecturerEntity {
 
     /**
      * 自增主键
@@ -38,30 +39,12 @@ public class UserEntity {
     private Integer modUser;
 
     /**
-     * 关联用户ID
+     * 讲师姓名
      */
-    @Column(name = "relate_id")
-    private Integer relateId;
+    private String name;
 
     /**
-     * 登录名
-     */
-    private String loginname;
-
-    /**
-     * 登录密码
-     */
-    private String password;
-
-    /**
-     * 状态 0注销。1生效
+     * 	状态	0=注销，1=生效
      */
     private Integer state;
-
-    /**
-     * 类别 0员工。1客户
-     */
-    private Integer type;
-
-
 }
