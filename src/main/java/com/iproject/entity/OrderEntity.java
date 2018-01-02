@@ -63,7 +63,6 @@ public class OrderEntity {
     /**
      * 状态 0=初始化，1=完成，2=退单
      */
-    @Column(name = "pay_type")
     private Integer state;
 
     /**
