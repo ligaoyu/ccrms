@@ -1,6 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://rm-wz9ve8022x9gpgvd7.mysql.rds.aliyuncs.com:3306/ccrms
+#    username: root
+#    password: LIgaoyu521
     url: jdbc:mysql://127.0.0.1:3306/ccrms
     username: root
     password: root

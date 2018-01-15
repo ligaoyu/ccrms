@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 public interface UserDao extends JpaRepository<UserEntity, Integer> {
 
     @Query(value = "select d from UserEntity d where d.loginname = ?1 ")
-    public UserEntity findByLoginName(String loginName);
+    UserEntity findUserByLoginName(String loginName);
+
 
 }
