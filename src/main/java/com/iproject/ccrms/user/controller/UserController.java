@@ -1,17 +1,16 @@
 package com.iproject.ccrms.user.controller;
 
 import com.iproject.ccrms.base.model.Result;
+import com.iproject.ccrms.base.redis.service.RedisService;
 import com.iproject.ccrms.base.utils.MD5Util;
 import com.iproject.ccrms.base.utils.ResultUtil;
 import com.iproject.ccrms.user.service.UserService;
 import com.iproject.ccrms.user.vo.LoginVO;
 import com.iproject.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -25,25 +24,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @PostMapping(value = "/login")
-//    public Result login(@Valid LoginVO loginVO, BindingResult bindingResult){
-//        if (bindingResult.hasErrors()) {
-//            return ResultUtil.error(1, bindingResult.getFieldError().getDefaultMessage());
-//        }
-//
-//        UserDetails userDetails = userService.loadUserByUsername(loginVO.getUsername());
-//
-//
-//
-//        if(result.getRetCode().equals(200)){
-//            ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-//            HttpServletRequest request = attributes.getRequest();
-//            HttpSession session = request.getSession();
-//            session.setAttribute("userId",loginVO.getUsername());
-//        }
-//
-//        return result;
-//    }
+    @Autowired
+    private RedisService redisService;
 
     @GetMapping
     public Result userList(){
@@ -68,6 +50,32 @@ public class UserController {
         return ResultUtil.success();
     }
 
+    @GetMapping(value = "/test")
+    public String test(HttpServletRequest request){
+        System.out.println("test method .......");
+        String token = request.getHeader("Authorization");
+        String str = (String) redisService.get(token);
+        System.out.println("token is : "+token);
+        System.out.println("str is : "+str);
+        return "str is : " + str;
+    }
+
+
+
+    @GetMapping(value = "/testAdd")
+    public Result testAdd(@RequestParam String key ,@RequestParam String value){
+        System.out.println("testAdd method .......");
+        redisService.set(key,value);
+        return ResultUtil.success();
+    }
+
+    @GetMapping(value = "/testget")
+    public String testget(@RequestParam String key){
+        System.out.println("testget method .......");
+        String str  = (String)redisService.get(key);
+        System.out.println("str is : "+str);
+        return str;
+    }
 
 
 
