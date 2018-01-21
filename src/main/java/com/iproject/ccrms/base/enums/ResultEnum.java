@@ -9,7 +9,10 @@ public enum ResultEnum {
     Unauthorized(401,"Unauthorized"),//所有需要登录验证的接口未登录的一律返回401，用于前端跳转登录页或重新登录
     Forbidden(403,"Forbidden"),//账号或密码错误，login接口专用返回码
     MethodNotAllow(405,"Method Not Allow"),//未授权操作一律返回此状态码
-    InternalServerError(500,"Internal Server Error")//服务器端未知错误
+    InternalServerError(500,"Internal Server Error"),//服务器端未知错误
+    UserNotFound(101,"用户不存在"),
+    WorngPassword(102,"密码错误"),
+    InvalidToken(102,"无效的token")
     ;
 
     private Integer code;
