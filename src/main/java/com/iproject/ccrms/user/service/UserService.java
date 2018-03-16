@@ -4,8 +4,9 @@ import com.iproject.ccrms.base.enums.ResultEnum;
 import com.iproject.ccrms.base.exception.BaseException;
 import com.iproject.ccrms.base.utils.MD5Util;
 import com.iproject.ccrms.user.dao.UserDao;
-import com.iproject.ccrms.token.model.LoginModel;
+import com.iproject.ccrms.user.model.LoginModel;
 import com.iproject.entity.UserEntity;
+import com.iproject.entity.UserTokenEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,6 @@ public class UserService{
 
     /**
      * 登陆验证
-     * @param username 用户登录名
      * @return
      */
     public UserEntity loginCheck(LoginModel loginModel){
@@ -38,6 +38,10 @@ public class UserService{
         }else{
             throw new BaseException(ResultEnum.WorngPassword);
         }
+    }
+
+    public UserEntity findUserById(Integer id){
+        return userDao.findOne(id);
     }
 
     public List<UserEntity> userList(){

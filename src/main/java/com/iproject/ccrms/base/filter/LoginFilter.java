@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.iproject.ccrms.base.constant.Constants;
 import com.iproject.ccrms.base.enums.ResultEnum;
 import com.iproject.ccrms.base.utils.ResultUtil;
-import com.iproject.ccrms.token.service.TokenManagerService;
+import com.iproject.ccrms.user.service.UserTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +23,7 @@ import java.io.PrintWriter;
 public class LoginFilter implements Filter {
 
     @Autowired
-    private TokenManagerService tokenManagerService;
+    private UserTokenService userTokenService;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -38,18 +38,21 @@ public class LoginFilter implements Filter {
         //排除登录API
         String url = request.getRequestURL().toString();
         String method = request.getMethod().toString();
-        if(url.endsWith("/token/login") && "POST".equals(method)){
+        if("POST".equals(method) && (
+                url.endsWith("/user/login")
+                || url.endsWith("/user/signup")
+        )){
             filterChain.doFilter(request,response);
         }else{
             String token = request.getHeader(Constants.AUTHORIZATION);
             if(token == null){
-                write(response,ResultUtil.error(ResultEnum.InvalidToken));
+                write(response,JSON.toJSON(ResultUtil.error(ResultEnum.InvalidToken)));
             }
-            boolean flag  = tokenManagerService.checkToken(token);
+            boolean flag  = userTokenService.checkToken(token);
             if(flag){
                 filterChain.doFilter(request,response);
             }else{
-                write(response,ResultUtil.error(ResultEnum.InvalidToken));
+                write(response,JSON.toJSON(ResultUtil.error(ResultEnum.InvalidToken)));
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.iproject.ccrms.token.model;
+package com.iproject.ccrms.user.model;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;

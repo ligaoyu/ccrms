@@ -1,34 +1,37 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
+#    数据库内网地址
 #    url: jdbc:mysql://rm-wz9ve8022x9gpgvd7.mysql.rds.aliyuncs.com:3306/ccrms
-#    username: root
-#    password: LIgaoyu521
-    url: jdbc:mysql://127.0.0.1:3306/ccrms
+#    数据库外网地址
+    url: jdbc:mysql://rm-wz9ve8022x9gpgvd7go.mysql.rds.aliyuncs.com:3306/ccrms
     username: root
-    password: root
+    password: LIgaoyu521
+#    url: jdbc:mysql://127.0.0.1:3306/ccrms
+#    username: root
+#    password: root
 # JPA
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
 
-# redis
-  redis:
-    # Redis服务器地址
-    host: localhost
-    # Redis服务器连接端口
-    port: 6379
-    # Redis服务器连接密码（默认为空)
-    password:
-    pool:
-      # 连接池最大连接数（使用负值表示没有限制）
-      max-active: 8
-      # 连接池最大阻塞等待时间（使用负值表示没有限制）
-      max-wait: -1
-      # 连接池中的最大空闲连接
-      max-idle: 8
-      # 连接池中的最小空闲连接
-      min-idle: 0
-    # 连接超时时间（毫秒）
-    timeout: 0
+## redis
+#  redis:
+#    # Redis服务器地址
+#    host: r-wz9d7fa0a9e2eaf4.redis.rds.aliyuncs.com
+#    # Redis服务器连接端口
+#    port: 6379
+#    # Redis服务器连接密码（默认为空)
+#    password: LIgaoyu521
+#    pool:
+#      # 连接池最大连接数（使用负值表示没有限制）
+#      max-active: 300
+#      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+#      max-wait: -1
+#      # 连接池中的最大空闲连接
+#      max-idle: 8
+#      # 连接池中的最小空闲连接
+##      min-idle: 0
+#    # 连接超时时间（毫秒）
+##    timeout: 0

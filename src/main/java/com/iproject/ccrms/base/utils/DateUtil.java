@@ -97,11 +97,22 @@ public class DateUtil {
     }
 
     /**
-     * 日期格式化
-     *
-     * @param date
+     * 对当前时间的分钟进行加减操作
+     * @param min
      * @return
      */
+    public static Date getBeforeHourTime(int min){
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MINUTE,min);
+        return calendar.getTime();
+    }
+
+        /**
+         * 日期格式化
+         *
+         * @param date
+         * @return
+         */
     public static Date getDateFormat(String date) {
         try {
             return dateFormat.parse(date);

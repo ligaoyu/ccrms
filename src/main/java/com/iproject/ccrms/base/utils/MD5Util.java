@@ -8,7 +8,7 @@ import java.security.MessageDigest;
 public class MD5Util {
 
     public static void main(String[] args) {
-        String pwd = getMD5("ligaoyuaaaaaa");
+        String pwd = getMD5("ligaoyu");
         System.out.println(pwd);
     }
 

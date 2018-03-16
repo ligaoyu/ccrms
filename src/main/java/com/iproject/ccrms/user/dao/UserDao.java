@@ -12,5 +12,4 @@ public interface UserDao extends JpaRepository<UserEntity, Integer> {
     @Query(value = "select d from UserEntity d where d.loginname = ?1 ")
     UserEntity findUserByLoginName(String loginName);
 
-
 }
